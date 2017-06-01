@@ -1,0 +1,21 @@
+snippet skel "c files Header" b
+// #############################################################################
+// File Name: `!v expand('%:t')`
+// Creation Date: `!v strftime("%d.%m.%Y")`
+// Created By: Jakob Schäfer
+// Notice: (C) Copyright `!v strftime("%Y")` by Jakob Schäfer, Inc. All Rights Reserved.
+// #############################################################################
+$0
+endsnippet
+snippet hskel "c files Header with guide" b
+#ifndef ${1}
+// #############################################################################
+// File Name: `!v expand('%:t')`
+// Creation Date: `!v strftime("%d.%m.%Y")`
+// Created By: Jakob Schäfer
+// Notice: (C) Copyright `!v strftime("%Y")` by Jakob Schäfer, Inc. All Rights Reserved.
+// #############################################################################
+$0
+#define $1
+#endif  \\ $1
+endsnippet

@@ -7,12 +7,16 @@
 "
 " ___________________________________________________________________________________
 
-let g:python3_host_prog='C:/Python36/python.exe'
+let g:python3_host_prog='C:/Python35/python.exe'
+let g:loaded_python_provider = 1
+let g:loaded_ruby_provider = 1
 
 set rtp +=~/AppData/Local/nvim/plugins
+set rtp +=~/AppData/Local/nvim/plugins/deoplete.nvim/
 
 " ............................. VUNDLE ........................................
 filetype off
+
 
 call plug#begin('~/AppData/Local/nvim/plugins')
 
@@ -37,6 +41,7 @@ Plug 'tpope/vim-repeat'
 
 " Vervollsändigt das aktelle getippte Wort mit Tab zu etwas was bereits vorkam
 Plug 'ervandew/supertab'
+Plug 'SirVer/ultisnips'
 
 " Colorschemes
 Plug 'tomasr/molokai'
@@ -50,9 +55,6 @@ Plug 'tomtom/tcomment_vim'
 
 " Fuzzyfinder für Dateien und Tags
 Plug 'ctrlpvim/ctrlp.vim'
-
-" Snippets
-Plug 'SirVer/ultisnips'
 
 " Passives Plugin sorgt für richtiges einrücken beim kopieren und einfügen
 Plug 'sickill/vim-pasta'
@@ -250,12 +252,29 @@ let g:tcommentTextObjectInlineComment = ''
 let g:ctrlp_map = '<leader>p'
 nnoremap <leader>t :CtrlPTag<cr>
 
-let g:UltiSnipsSnippetDirectories='~/AppData/Local/nvim/UltiSnips'
-let g:UltiSnipsExpandTrigger = "<tab>"
-let g:UltiSnipsUsePythonVersion = 3
+let g:deoplete#enable_at_startup=1
+let g:deoplete#disable_auto_complete = 1
+let g:deoplete#sources = {}
+let g:deoplete#sources._ = ['buffer']
+inoremap <silent><expr> <TAB>
+    \ pumvisible() ? "\<C-n>" :
+    \ <SID>check_back_space() ? "\<TAB>" :
+    \ deoplete#mappings#manual_complete()
+function! s:check_back_space() abort "{{{
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~ '\s'
+endfunction"}}}
 
 let g:localvimrc_sandbox = 0
 let g:localvimrc_ask = 0
 let g:localvimrc_name = "lvimrc"
 
+let g:UltiSnipsUsePythonVersion = 3
+let g:UltiSnipsExpandTrigger = "<tab>"
+
 nnoremap ^ :Grepper -tool findstr -noswitch -noopen -nojump<cr>
+
+let g:loaded_gentags#ctags=0
+let g:loaded_gentags#gtags=1
+
+highlight! link QuickFixLine Normal
