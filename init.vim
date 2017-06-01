@@ -92,7 +92,6 @@ set lines=50
 set columns=120
 set updatetime=750
 set splitright
-set splitbelow
 set virtualedit=block
 set foldenable
 set foldlevel=99
@@ -150,7 +149,7 @@ set formatoptions+=l
 " ===================================================================
 nnoremap <down> :cn<cr>
 nnoremap <left> :cclose<cr>
-nnoremap <right> :copen<cr>
+nnoremap <right> :copen<cr><c-w><c-p>
 nnoremap <up> :cp<cr>
 
 vnoremap <down> <Nop>
@@ -258,3 +257,5 @@ let g:UltiSnipsUsePythonVersion = 3
 let g:localvimrc_sandbox = 0
 let g:localvimrc_ask = 0
 let g:localvimrc_name = "lvimrc"
+
+nnoremap ^ :Grepper -tool findstr -noswitch -noopen -nojump<cr>
