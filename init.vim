@@ -1,87 +1,79 @@
 ﻿" TODO: - substitute command?
-" ________________________________ REM WINDOWS SETUP ________________________________
-" cd %USERPROFILE%
-" git clone https://github.com/VundleVim/Vundle.vim.git %USERPROFILE%/AppData/Local/nvim/bundle/Vundle.vim
+" ________________________________ WINDOWS SETUP ________________________________
+"
+" md ~\AppData\Local\nvim\autoload
+" $uri = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+" (New-Object Net.WebClient).DownloadFile($uri, $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath("~\AppData\Local\nvim\autoload\plug.vim"))
+"
 " ___________________________________________________________________________________
 
-if has("gui_running")
-  set guioptions-=m  " entfernt menu bar
-  set guioptions-=T  " entfernt toolbar
-  set guioptions-=r  " entfernt right-hand scroll bar
-  set guioptions-=L  " entfernt left-hand scroll bar
-  if has("gui_gtk2")
-    set guifont=Inconsolata\ 12
-  elseif has("gui_macvim")
-    set guifont=Menlo\ Regular:h14
-  elseif has("gui_win32")
-    set guifont=Consolas:h12:cANSI
-  endif
-endif
-autocmd GUIEnter * set t_vb=
+let g:python3_host_prog='C:/Python36/python.exe'
+
+set rtp +=~/AppData/Local/nvim/plugins
 
 " ............................. VUNDLE ........................................
-set nocompatible
 filetype off
 
-set rtp+=~/AppData/Local/nvim/bundle/Vundle.vim
-call vundle#begin('$USERPROFILE/AppData/Local/nvim/bundle')
-
-" ................. Kann sich selbst updaten, VimPluginManager
-" Der PluginManager selbst
-Plugin 'gmarik/Vundle.vim'
+call plug#begin('~/AppData/Local/nvim/plugins')
 
 " Startbildschirm
-Plugin 'mhinz/vim-startify'
+Plug 'mhinz/vim-startify'
 
-" latex
-" Plugin 'latex-box-team/latex-box'
+" Asynchrones make
+Plug 'neomake/neomake'
+
+" Gtags
+Plug 'jsfaint/gen_tags.vim'
+
+" Asynchrones grep
+Plug 'mhinz/vim-grepper'
 
 " Alles rundum Klammerungen
-Plugin 'Raimondi/delimitMate'
-Plugin 'tpope/vim-surround'
+Plug 'Raimondi/delimitMate'
+Plug 'tpope/vim-surround'
 
 " Damit vim-surround mit repeat funktioniert - mehr nicht
-Plugin 'tpope/vim-repeat'
+Plug 'tpope/vim-repeat'
 
 " Vervollsändigt das aktelle getippte Wort mit Tab zu etwas was bereits vorkam
-Plugin 'ervandew/supertab'
+Plug 'ervandew/supertab'
 
 " Colorschemes
-Plugin 'tomasr/molokai'
-Plugin 'beyondmarc/hlsl.vim'
+Plug 'tomasr/molokai'
+Plug 'beyondmarc/hlsl.vim'
 
 " Ermöglicht das tauschen von beliebigen Textobjekten
-Plugin 'tommcdo/vim-exchange'
+Plug 'tommcdo/vim-exchange'
 
 " Auskommentieren
-Plugin 'tomtom/tcomment_vim'
+Plug 'tomtom/tcomment_vim'
 
 " Fuzzyfinder für Dateien und Tags
-Plugin 'ctrlpvim/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 
 " Snippets
-Plugin 'SirVer/ultisnips'
+Plug 'SirVer/ultisnips'
 
 " Passives Plugin sorgt für richtiges einrücken beim kopieren und einfügen
-Plugin 'sickill/vim-pasta'
+Plug 'sickill/vim-pasta'
 
 " Erweitert vim um weitere Textobjekte
-Plugin 'kana/vim-textobj-user'
-  Plugin 'kana/vim-textobj-line'
-  Plugin 'kana/vim-textobj-indent'
-  Plugin 'kana/vim-textobj-entire'
-  Plugin 'julian/vim-textobj-variable-segment'
-  Plugin 'sgur/vim-textobj-parameter'
-  Plugin 'glts/vim-textobj-comment'
+Plug 'kana/vim-textobj-user'
+  Plug 'kana/vim-textobj-line'
+  Plug 'kana/vim-textobj-indent'
+  Plug 'kana/vim-textobj-entire'
+  Plug 'julian/vim-textobj-variable-segment'
+  Plug 'sgur/vim-textobj-parameter'
+  Plug 'glts/vim-textobj-comment'
 
 " Hübschere Statusleiste mit mehr Informationen
-Plugin 'bling/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
+Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 " Ermöglicht ein Projektspezifisches vimrc einfach 'lvimrc' nennen
-Plugin 'embear/vim-localvimrc'
+Plug 'embear/vim-localvimrc'
 
-call vundle#end()
+call plug#end()
 
 filetype plugin indent on
 " LEADER-KEY
@@ -202,8 +194,8 @@ onoremap <A-k> {
 
 " ------------ copy and paste ala ctrl-c ctrl-v
 nnoremap <c-v> "+p
+inoremap <c-v> <c-r>+
 vnoremap <c-c> "+y
-
 
 " ------------ Repeat makro in register q
 nnoremap Q @q
@@ -246,32 +238,23 @@ endif
 
 " -------------------
 " PLUGIN EINSTELLUNGEN UND KEYBINDINGS
-" PLUGIN 'MHINZ/VIM-STARTIFY'
 let g:startify_change_to_dir = 0
-" PLUGIN 'LATEX-BOX-TEAM/LATEX-BOX'
-" PLUGIN 'RAIMONDI/DELIMITMATE'
+
 let delimitMate_expand_cr = 1
-" PLUGIN 'TPOPE/VIM-SURROUND'
-" PLUGIN 'TPOPE/VIM-REPEAT'
-" PLUGIN 'ERVANDEW/SUPERTAB'
+
 let g:SuperTabCompleteCase = 'ignore'
-" PLUGIN 'TOMASR/MOLOKAI'
+
 let g:molokai_original = 0
-" PLUGIN 'TOMMCDO/VIM-EXCHANGE'
-" PLUGIN 'TOMTOM/TCOMMENT_VIM'
+
 let g:tcommentTextObjectInlineComment = ''
-" PLUGIN 'CTRLPVIM/CTRLP.VIM'
+
 let g:ctrlp_map = '<leader>p'
 nnoremap <leader>t :CtrlPTag<cr>
-" PLUGIN 'SIRVER/ULTISNIPS'
+
+let g:UltiSnipsSnippetDirectories='~/AppData/Local/nvim/UltiSnips'
 let g:UltiSnipsExpandTrigger = "<tab>"
-let g:UltiSnipsUsePythonVersion = 2
-" PLUGIN 'SICKILL/VIM-PASTA'
-" PLUGIN 'KANA/VIM-TEXTOBJ-USER'
-" PLUGIN 'BLING/VIM-AIRLINE'
-" PLUGIN 'VIM-AIRLINE/VIM-AIRLINE-Themes'
-" PLUGIN 'EMBEAR/VIM-LOCALVIMRC'
+let g:UltiSnipsUsePythonVersion = 3
+
 let g:localvimrc_sandbox = 0
 let g:localvimrc_ask = 0
 let g:localvimrc_name = "lvimrc"
-
