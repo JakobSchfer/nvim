@@ -7,8 +7,8 @@ snippet skel "c files Header" b
 // #############################################################################
 $0
 endsnippet
-snippet hskel "c files Header with guide" b
-#ifndef ${1}
+snippet hskel "c files Header with guard" b
+#ifndef `!v "CODE_".toupper(expand('%:t:r'))."_".toupper(expand('%:e'))."_"`
 // #############################################################################
 // File Name: `!v expand('%:t')`
 // Creation Date: `!v strftime("%d.%m.%Y")`
@@ -16,6 +16,12 @@ snippet hskel "c files Header with guide" b
 // Notice: (C) Copyright `!v strftime("%Y")` by Jakob Schäfer, Inc. All Rights Reserved.
 // #############################################################################
 $0
-#define $1
-#endif  \\ $1
+#define `!v "CODE_".toupper(expand('%:t:r'))."_".toupper(expand('%:e'))."_"`
+#endif // `!v "CODE_".toupper(expand('%:t:r'))."_".toupper(expand('%:e'))."_"`
+endsnippet
+snippet guard "header guard" b
+#ifndef `!v "CODE_".toupper(expand('%:t:r'))."_".toupper(expand('%:e'))."_"`
+$0
+#define `!v "CODE_".toupper(expand('%:t:r'))."_".toupper(expand('%:e'))."_"`
+#endif // `!v "CODE_".toupper(expand('%:t:r'))."_".toupper(expand('%:e'))."_"`
 endsnippet
