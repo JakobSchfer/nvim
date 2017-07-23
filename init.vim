@@ -26,6 +26,7 @@ Plug 'mhinz/vim-startify'
 " Asynchrones make
 Plug 'neomake/neomake'
 
+
 " Gtags
 Plug 'jsfaint/gen_tags.vim'
 
@@ -46,6 +47,7 @@ Plug 'SirVer/ultisnips'
 " Colorschemes
 Plug 'tomasr/molokai'
 Plug 'beyondmarc/hlsl.vim'
+Plug 'ajh17/spacegray.vim'
 
 " Ermöglicht das tauschen von beliebigen Textobjekten
 Plug 'tommcdo/vim-exchange'
@@ -120,7 +122,7 @@ set t_Co=256
 " set statusline-=%t
 " -------------------- FARBEN UND FORMATIERUNGEN ------------------------------
 set background=dark
-colorscheme molokai
+colorscheme spacegray
 set encoding=utf8
 set ffs=unix,dos,mac
 set listchars=eol:¬,tab:»·,trail:·
@@ -276,5 +278,8 @@ nnoremap ^ :Grepper -tool findstr -noswitch -noopen -nojump<cr>
 
 let g:loaded_gentags#ctags=0
 let g:loaded_gentags#gtags=1
+
+let g:spacegray_italicize_comments = 1
+let g:spacegray_underline_search = 1
 
 highlight! link QuickFixLine Normal
