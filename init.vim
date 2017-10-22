@@ -166,8 +166,7 @@ inoremap <left> <Nop>
 inoremap <right> <Nop>
 inoremap <up> <Nop>
 
-inoremap <A-l> <esc>la
-inoremap <A-n> <esc>la,<space>
+inoremap <a-(> ();<esc>hi
 
 " ------------
 
@@ -273,8 +272,6 @@ let g:localvimrc_name = "lvimrc"
 
 let g:UltiSnipsUsePythonVersion = 3
 let g:UltiSnipsExpandTrigger = "<tab>"
-
-nnoremap ^ :Grepper -tool findstr -noswitch -noopen -nojump<cr>
 
 let g:loaded_gentags#ctags=0
 let g:loaded_gentags#gtags=1
