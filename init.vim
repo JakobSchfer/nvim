@@ -166,8 +166,6 @@ inoremap <left> <Nop>
 inoremap <right> <Nop>
 inoremap <up> <Nop>
 
-inoremap <a-(> ();<esc>hi
-
 " ------------
 
 nnoremap j gj
