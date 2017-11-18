@@ -26,13 +26,6 @@ Plug 'mhinz/vim-startify'
 " Asynchrones make
 Plug 'neomake/neomake'
 
-
-" Gtags
-Plug 'jsfaint/gen_tags.vim'
-
-" Asynchrones grep
-Plug 'mhinz/vim-grepper'
-
 " Alles rundum Klammerungen
 Plug 'Raimondi/delimitMate'
 Plug 'tpope/vim-surround'
@@ -45,8 +38,6 @@ Plug 'ervandew/supertab'
 Plug 'SirVer/ultisnips'
 
 " Colorschemes
-Plug 'tomasr/molokai'
-Plug 'beyondmarc/hlsl.vim'
 Plug 'ajh17/spacegray.vim'
 
 " Ermöglicht das tauschen von beliebigen Textobjekten
@@ -229,6 +220,9 @@ nnoremap U <c-R>
 nnoremap V <C-v>
 nnoremap vv <S-v>
 
+
+" ------------ init.vim stuff  zum laden :so %
+nnoremap <F12> :tabnew ~\AppData\Local\nvim\init.vim<cr>
 
 " ------------ misc handling breaker
 
