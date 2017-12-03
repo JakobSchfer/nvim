@@ -68,6 +68,9 @@ Plug 'vim-airline/vim-airline-themes'
 " Ermöglicht ein Projektspezifisches vimrc einfach 'lvimrc' nennen
 Plug 'embear/vim-localvimrc'
 
+" Alles rund um xml
+Plug 'othree/xml.vim'
+
 call plug#end()
 
 filetype plugin indent on
