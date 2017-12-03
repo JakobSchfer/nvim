@@ -7,7 +7,7 @@
 "
 " ___________________________________________________________________________________
 
-let g:python3_host_prog='C:/Python35/python.exe'
+let g:python3_host_prog='D:/Python36/python.exe'
 let g:loaded_python_provider = 1
 let g:loaded_ruby_provider = 1
 
@@ -80,6 +80,7 @@ let mapleader = ","
 " BASICS
 set history=1000
 set autoread
+au FocusGained * :checktime
 set backspace=eol,start,indent
 set noerrorbells
 set visualbell
@@ -268,10 +269,9 @@ let g:localvimrc_name = "lvimrc"
 let g:UltiSnipsUsePythonVersion = 3
 let g:UltiSnipsExpandTrigger = "<tab>"
 
-let g:loaded_gentags#ctags=0
-let g:loaded_gentags#gtags=1
-
 let g:spacegray_italicize_comments = 1
 let g:spacegray_underline_search = 1
 
 highlight! link QuickFixLine Normal
+
+
